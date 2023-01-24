@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import Input from '../components/Input';
 import MyButton from '../components/MyButton';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 export default function MainScreen() {
     let [text, setText] = useState("");
@@ -46,7 +47,8 @@ export default function MainScreen() {
         {list.map((e, i) => {
           return <p key={i} className={e.checked ? "list selected" : "list"} >{e.text}
             <span>
-              <CheckBoxIcon sx={{ marginLeft: "10px" }} onClick={() => checkItem(e)} />
+              {e.checked?<CheckBoxIcon sx={{ marginLeft: "10px" }} onClick={() => checkItem(e)} />:<CheckBoxOutlineBlankIcon sx={{ marginLeft: "10px" }} onClick={() => checkItem(e)} />}
+              
               <EditIcon sx={{ marginLeft: "10px" }}  onClick={e.checked ? null : () => editItem(e.text, i)} />
               <DeleteIcon sx={{ marginLeft: "10px" }} onClick={e.checked ? null : () => deleteItem(i)} />
             </span>
